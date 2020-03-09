@@ -1,24 +1,43 @@
 package ru.spbstu.main.shapes;
 
-/**
- * Представление о треугольнике.
- * <p>
- * Треуго́льник (в евклидовом пространстве) — геометрическая
- * фигура, образованная тремя отрезками, которые соединяют
- * три точки, не лежащие на одной прямой. Указанные три
- * точки называются вершинами треугольника, а отрезки —
- * сторонами треугольника. Часть плоскости, ограниченная
- * сторонами, называется внутренностью треугольника: нередко
- * треугольник рассматривается вместе со своей внутренностью
- * (например, для определения понятия площади).
- *
- * @see <a href="https://ru.wikipedia.org/wiki/%D0%A2%D1%80%D0%B5%D1%83%D0%B3%D0%BE%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA">Треугольник</a>
- */
-public class Triangle {
+public class Triangle implements Shape, Polygon {
 
-    /*
-     * TODO: Реализовать класс 'Triangle'
-     * 1. Используйте наследование.
-     * 2. Реализуйте все абстрактные методы.
-     */
+    private distance p1;
+    private distance p2;
+    private distance p3;
+    private int rotation;
+
+    public Triangle(float x1, float y1, float x2, float y2, float x3, float y3, int rotation) {
+        this.p1 = new distance(x1, y1);
+        this.p2 = new distance(x2, y2);
+        this.p3 = new distance(x3, y3);
+        this.rotation = rotation;
+    }
+
+    @Override
+    public float getPerimeter() {
+        return (float) 1.0;
+    }
+
+    @Override
+    public float getArea() {
+//    воспользовался формулой площади Гаусса для треугольника
+        float add1 = this.p1.getX() * this.p2.getY();
+        float add2 = this.p2.getX() * this.p3.getY();
+        float add3 = this.p3.getX() * this.p1.getY();
+        float add4 = this.p2.getX() * this.p1.getY();
+        float add5 = this.p3.getX() * this.p2.getY();
+        float add6 = this.p1.getX() * this.p3.getY();
+        float result = (float) 0.5 * Math.abs(add1 + add2 + add3 - add4 - add5 - add6);
+        return result;
+    }
+
+    @Override
+    public int getRotation() {
+        return this.rotation;
+    }
+
+    public void setRotation(int angle) {
+        this.rotation = angle;
+    }
 }
