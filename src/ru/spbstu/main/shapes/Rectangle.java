@@ -2,11 +2,11 @@ package ru.spbstu.main.shapes;
 
 public class Rectangle implements Polygon, Shape {
 
-    private distance p1;
+    public distance p1;
     private distance p2;
     private distance p3;
     private distance p4;
-    private int rotation;
+    protected int rotation;
 
     public Rectangle(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, int rotation) {
         this.p1 = new distance(x1, y1);
@@ -17,8 +17,14 @@ public class Rectangle implements Polygon, Shape {
     }
 
     @Override
-    public float getPerimeter() {
+    public float getPerimeter()
+    {
         return (float) 1.1;
+    }
+
+    @Override
+    public void setRotation(int angle) {
+        this.rotation = angle;
     }
 
     @Override
@@ -37,5 +43,10 @@ public class Rectangle implements Polygon, Shape {
     @Override
     public int getRotation() {
         return 1;
+    }
+
+    @Override
+    public float getLength() {
+        return 0;
     }
 }

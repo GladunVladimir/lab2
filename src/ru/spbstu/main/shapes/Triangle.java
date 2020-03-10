@@ -21,20 +21,23 @@ public class Triangle implements Shape, Polygon {
 
     @Override
     public float getArea() {
-//    воспользовался формулой площади Гаусса для треугольника
         float add1 = this.p1.getX() * this.p2.getY();
         float add2 = this.p2.getX() * this.p3.getY();
         float add3 = this.p3.getX() * this.p1.getY();
         float add4 = this.p2.getX() * this.p1.getY();
         float add5 = this.p3.getX() * this.p2.getY();
         float add6 = this.p1.getX() * this.p3.getY();
-        float result = (float) 0.5 * Math.abs(add1 + add2 + add3 - add4 - add5 - add6);
-        return result;
+        return (float) 0.5 * Math.abs(add1 + add2 + add3 - add4 - add5 - add6);
     }
 
     @Override
     public int getRotation() {
         return this.rotation;
+    }
+
+    @Override
+    public float getLength() {
+        return 0;
     }
 
     public void setRotation(int angle) {

@@ -7,4 +7,10 @@ public interface Shape {
     default int getRotation(){
         return 0;
     }
+
+    float getLength();
+
+    float getPerimeter();
+
+    public void setRotation(int angle);
 }

@@ -6,7 +6,7 @@ import ru.spbstu.main.shapes.distance;
 public class Circle implements Ellipse {
 
     private double rad;
-    private distance p1;
+    protected distance p1;
 
     public Circle(float x1, float y1, double radius) {
         this.p1 = new distance(x1, y1);
@@ -16,9 +16,23 @@ public class Circle implements Ellipse {
     public float getArea() {
         return (float) (Math.PI * Math.pow(this.rad, 2.0));
     }
-    //public int getRotation(){return 1;}
 
-    public float getLength() {
+    @Override
+    public int getRotation() {
+        return 0;
+    }
+
+    @Override
+    public float getPerimeter() {
+        return 0;
+    }
+
+    @Override
+    public void setRotation(int angle) {
+    }
+
+    public float getLength()
+    {
         return (float) (2 * Math.PI * this.rad);
     }
 }
